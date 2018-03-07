@@ -17,6 +17,6 @@ module.exports = function(app){
 
 
 app.param('articleId', articles.articleByID);
+app.route('/articles/all').get(articles.listView);
 
-
-}
+};
