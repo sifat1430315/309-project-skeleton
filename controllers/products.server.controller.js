@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var Product = require('./../models/Article.js');
+var Product = require('./../models/Product.js');
 var errorHandler = require('./errors.server.controller');
 var _ = require('lodash');
 
@@ -101,7 +101,7 @@ module.exports.update = function(req, res) {
   	});
 };
 
-exports.articleByID = function(req, res, next, id) {
+exports.productByID = function(req, res, next, id) {
 	Product.findById(id).populate('user', 'email').exec(function(err, product) {
 		if (err) return next(err);
 		if (!product) return next(new Error('Failed to load product ' + id));

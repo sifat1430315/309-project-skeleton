@@ -6,16 +6,22 @@
         <h1>Create new product</h1>
         <p>Title:</p>
         <input type="text" id="title"/><br/>
-        <p>Content</p>
-        <textarea id="content">Add content </textarea><br/><br/>
+        <p>Description:</p>
+        <input type="string" id="description"/><br/>
+        <p>Price:</p>
+        <input type="number" id="price"/><br/>
+        <p>Quantity</p>
+        <textarea id="quantity"></textarea><br/><br/>
         <button id="submit">Submit</button>
         <script src="/lib/jquery/dist/jquery.min.js"></script>
         <script>
-        var newProduct = {title:"", content:""};
+        var newProduct = {title:"", description:"", price:"", quantity:""};
             $('#submit').click(function(){
                 console.log('submit clicked');
                 newProduct.title= $('#title').val();
-                newProduct.content = $('#content').val();
+                newProduct.description= $('#description').val();
+                newProduct.price= $('#price').val();
+                newProduct.quantity = $('#quantity').val();
                 $.ajax({
                     method: "POST",
                     url: "/api/products",
