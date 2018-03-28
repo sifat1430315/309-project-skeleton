@@ -7,12 +7,13 @@
         <p>Title:</p>
         <input type="text" id="title"/><br/>
         <p>Description:</p>
-        <input type="string" id="description"/><br/>
+        <textarea id="description"></textarea><br/>
         <p>Price:</p>
         <input type="number" id="price"/><br/>
         <p>Quantity</p>
         <textarea id="quantity"></textarea><br/><br/>
         <button id="submit">Submit</button>
+        <div id="error"></div>
         <script src="/lib/jquery/dist/jquery.min.js"></script>
         <script>
         var newProduct = {title:"", description:"", price:"", quantity:""};
@@ -28,7 +29,9 @@
                     data: newProduct
                 }).done(function(response){
                     console.log(response);
+                    window.location.replace('/product/'+response._id);
                 }).fail(function(response){
+                    $('#error').text(JSON.parse(response.responseText).message);
                     console.log(response.responseText);
                 });
             });
